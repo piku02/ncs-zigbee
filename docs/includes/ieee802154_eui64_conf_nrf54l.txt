@@ -1,0 +1,16 @@
+An IEEE EUI-64 address consists of two parts:
+
+* Company ID - a 24-bit MA-L (MAC Address Block Large), formerly called OUI (Organizationally Unique Identifier)
+* Extension identifier - a 40-bit device unique identifier
+
+You can configure the EUI-64 for a device in the following ways:
+
+Use the default
+  By default, the company ID is set to Nordic Semiconductor's MA-L (``f4-ce-36``).
+  The extension identifier is set to the DEVICEID from the factory information configuration registers (FICR).
+
+Replace the company ID
+  You can enable the ``CONFIG_IEEE802154_VENDOR_OUI_ENABLE`` Kconfig option to replace Nordic Semiconductor's company ID with your own company ID.
+  Specify your company ID in the ``CONFIG_IEEE802154_VENDOR_OUI`` Kconfig option.
+
+  The extension identifier is set to the default, namely the DEVICEID from FICR.
