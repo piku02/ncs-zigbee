@@ -4,6 +4,9 @@ on: [push]
 jobs:
   Explore-Github-Actions:
     runs-on: self-hosted
+    container:
+      image: ghcr.io/nrfconnect/ncs-zigbee:main
+      options: --cpus 2 --privileged
     steps:
     - run: echo "job was triggered by ${{ github.event_name}} event."
     - run: echo "job is running on ${{ runner.os }}"
