@@ -40,5 +40,5 @@ jobs:
         west update
     - name: Build samples
       run: |
-        twister --inline-logs --build-only -N --verbose -T samples --all -x CONFIG_ZBOSS_HALT_ON_ASSERT=y -x CONFIG_RESET_ON_FATAL_ERROR=n -x CONFIG_FACTORY_RESET_PRESS_TIME_SECONDS=2
+        west twister --inline-logs --build-only -N --verbose -T samples --all -x CONFIG_ZBOSS_HALT_ON_ASSERT=y -x CONFIG_RESET_ON_FATAL_ERROR=n -x CONFIG_FACTORY_RESET_PRESS_TIME_SECONDS=2
       
