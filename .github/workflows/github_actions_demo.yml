@@ -33,7 +33,7 @@ jobs:
       uses: actions/checkout@v4
     - name: prepare west project
       run: |
-        export ZEPHYR_BASE=./zephyr
+        west init
         west update
     - name: Build samples
       run: |
