@@ -5,7 +5,7 @@ jobs:
   Explore-Github-Actions:
     runs-on: ubuntu-24.04
     container:
-      image: docker-dtr.nordicsemi.no/sw-production/ncs-ubuntu-metadata-free:24.04_1.0.0
+      image: docker-dtr.nordicsemi.no/sw-production/ncs-build:4ffa2202d5_135914361f
       credentials:
         username: ${{ secrets.docker_user }}
         password: ${{ secrets.docker_password }}
