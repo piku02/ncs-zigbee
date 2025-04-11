@@ -3,7 +3,9 @@ run-name: ${{ github.actor }} is testing out github actions
 on: [push]
 jobs:
   Explore-Github-Actions:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    container:
+      image: docker-dtr.nordicsemi.no/sw-production/ncs-ubuntu-metadata-free:24.04_1.0.0
     steps:
     - run: echo "job was triggered by ${{ github.event_name}} event."
     - run: echo "job is running on ${{ runner.os }}"
@@ -15,3 +17,10 @@ jobs:
       run: |
         ls ${{ github.workspace }}
     - run: echo "job status is this job status is ${{job.status}},"
+  Discover-targets:
+    runs-on: ubuntu-22.04
+    outputs:
+      total_platforms_json: ${{ steps.subsets.outputs.total_platforms_json}}
+      subset_matrix: ${{steps.subsets.outputs.matrix}}
+      subser_config: ${{steps.subsets.outpus.config}}
+    
