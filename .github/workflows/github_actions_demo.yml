@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-24.04
     container:
       image: docker-dtr.nordicsemi.no/sw-production/ncs-ubuntu-metadata-free:24.04_1.0.0
+      credentials:
+        username: ${{ secrets.docker_user }}
+        password: ${{ secrets.docker_password }}
     steps:
     - run: echo "job was triggered by ${{ github.event_name}} event."
     - run: echo "job is running on ${{ runner.os }}"
