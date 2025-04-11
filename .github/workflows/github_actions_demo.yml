@@ -33,7 +33,6 @@ jobs:
       uses: actions/checkout@v4
     - name: prepare west project
       run: |
-        west init
         west update
     - name: Build samples
       run: |
