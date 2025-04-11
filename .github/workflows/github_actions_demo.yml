@@ -23,4 +23,5 @@ jobs:
       total_platforms_json: ${{ steps.subsets.outputs.total_platforms_json}}
       subset_matrix: ${{steps.subsets.outputs.matrix}}
       subser_config: ${{steps.subsets.outpus.config}}
-    steps: echo "next step to be taken"
+    steps: 
+    - run: echo "next step to be taken"
