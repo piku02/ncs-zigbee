@@ -33,11 +33,10 @@ jobs:
       uses: actions/checkout@v4
     - name: prepare west project
       run: |
-        rm -rdf .west
-        rm -rdf zephyr
+        rm -rf .west
         west --version
-        west init
-        west update
+        west init -l zigbee --mf west.yml &&
+        west update -n -o=--depth=1 --path-cache /workdir/
     - name: Build samples
       run: |
         west twister --inline-logs --build-only -N --verbose -T samples --all -x CONFIG_ZBOSS_HALT_ON_ASSERT=y -x CONFIG_RESET_ON_FATAL_ERROR=n -x CONFIG_FACTORY_RESET_PRESS_TIME_SECONDS=2
