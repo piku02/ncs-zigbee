@@ -3,12 +3,13 @@ run-name: ${{ github.actor }} is testing out github actions
 on: [push]
 jobs:
   Explore-Github-Actions:
-    runs-on: ubuntu-24.04
-    container:
-      image: docker-dtr.nordicsemi.no/sw-production/ncs-build:4ffa2202d5_135914361f
-      credentials:
-        username: ${{ secrets.docker_user }}
-        password: ${{ secrets.docker_password }}
+    runs-on: ubuntu-22.04
+    container: ghcr.io/nrfconnect/sdk-nrf-toolchain:v2.7.99
+    defaults:
+      run:
+        # Bash shell is needed to set toolchain related environment variables in docker container
+        # It is a workaround for GitHub Actions limitation https://github.com/actions/runner/issues/1964
+        shell: bash
     steps:
     - run: echo "job was triggered by ${{ github.event_name}} event."
     - run: echo "job is running on ${{ runner.os }}"
