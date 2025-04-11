@@ -34,6 +34,7 @@ jobs:
     - name: prepare west project
       run: |
         rm -rdf .west
+        rm -rdf zephyr
         west --version
         west init
         west update
