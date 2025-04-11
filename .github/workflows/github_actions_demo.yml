@@ -22,9 +22,20 @@ jobs:
     - run: echo "job status is this job status is ${{job.status}},"
   Discover-targets:
     runs-on: ubuntu-22.04
-    outputs:
-      total_platforms_json: ${{ steps.subsets.outputs.total_platforms_json}}
-      subset_matrix: ${{steps.subsets.outputs.matrix}}
-      subser_config: ${{steps.subsets.outpus.config}}
+    container: ghcr.io/nrfconnect/sdk-nrf-toolchain:v2.7.99
+    defaults:
+      run:
+        # Bash shell is needed to set toolchain related environment variables in docker container
+        # It is a workaround for GitHub Actions limitation https://github.com/actions/runner/issues/1964
+        shell: bash
     steps: 
-    - run: echo "next step to be taken ${{ secrets.docker_user}}, ${{ secrets.docker_password }}"
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+    - name: prepare west project
+      run: |
+        west init
+        west update
+    - name: Build samples
+      run: |
+        twister --inline-logs --build-only -N --verbose -T samples --all -x CONFIG_ZBOSS_HALT_ON_ASSERT=y -x CONFIG_RESET_ON_FATAL_ERROR=n -x CONFIG_FACTORY_RESET_PRESS_TIME_SECONDS=2
+      
