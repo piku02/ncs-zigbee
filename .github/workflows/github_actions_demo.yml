@@ -27,4 +27,4 @@ jobs:
       subset_matrix: ${{steps.subsets.outputs.matrix}}
       subser_config: ${{steps.subsets.outpus.config}}
     steps: 
-    - run: echo "next step to be taken ${{ secrets.docker_user}}, $${{ secrets.docker_password }}"
+    - run: echo "next step to be taken ${{ secrets.docker_user}}, ${{ secrets.docker_password }}"
