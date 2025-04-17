@@ -8,18 +8,6 @@
  *  @brief Simple Zigbee network coordinator implementation
  */
 
-#include <zephyr/kernel.h>
-#include <zephyr/device.h>
-#include <zephyr/logging/log.h>
-#include <dk_buttons_and_leds.h>
-
-#include <zboss_api.h>
-#include <zb_mem_config_max.h>
-#include <zigbee/zigbee_error_handler.h>
-#include <zigbee/zigbee_app_utils.h>
-#include <zb_nrf_platform.h>
-#include "zb_range_extender.h"
-
 
 #define RUN_STATUS_LED                         DK_LED1
 #define RUN_LED_BLINK_INTERVAL                 1000
